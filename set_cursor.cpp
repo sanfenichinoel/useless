@@ -1,5 +1,6 @@
 #include <windows.h>
 #include <stdio.h>
+#include "point.h"
 
 #ifndef __SETCURSOR__
 #define __SETCURSOR__
@@ -29,13 +30,11 @@ void SetColor(int colorID)
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), colorID);
 }
 
-void SetBackColor()
-{
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),
-                            FOREGROUND_BLUE |
-                            BACKGROUND_BLUE |
-                            BACKGROUND_GREEN |
-                            BACKGROUND_RED );
+
+void ShowPoint(Point now, int color){
+    SetCursorPosition(now.x, now.y);
+    SetColor(color);
+    printf("■");
 }
 
 #endif
