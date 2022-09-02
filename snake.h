@@ -10,7 +10,7 @@ using namespace std;
 #ifndef __SNACK__
 #define __SNACK__
 
-class Snack: public MyMap
+class Snake: public MyMap
 {
 private:
     int length;
@@ -23,13 +23,13 @@ private:
     int dy[5] = {0, 0, -1, 0, 1};
 
 public:
-    Snack(int size_x, int size_y);
-    void SnackShow();
-    bool SnackMove();
-    void SnackTurn();
-    bool SnackEat(Point head);
-    bool SnackDeath(Point nextPos);
-    void SnackBegin();
+    Snake(int size_x, int size_y);
+    void SnakeShow();
+    bool SnakeMove();
+    void SnakeTurn();
+    bool SnakeEat(Point head);
+    bool SnakeDeath(Point nextPos);
+    void SnakeBegin();
 };
 
 #endif

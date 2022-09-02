@@ -4,8 +4,8 @@ int main()
 {
     int x = 30, y = 30;
     SetConsoleOutputCP(65001);
-    Snack s(x, y);
-    s.SnackBegin();
+    Snake s(x, y);
+    s.SnakeBegin();
 
     system("pause");
     return 0;

@@ -3,5 +3,5 @@
 #include "point.h"
 #include "mymap.h"
 #include "mymap.cpp"
-#include "snack.h"
-#include "snack.cpp"
+#include "snake.h"
+#include "snake.cpp"

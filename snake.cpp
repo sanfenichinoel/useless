@@ -1,6 +1,6 @@
-#include "snack.h"
+#include "snake.h"
 
-Snack::Snack(int x, int y): MyMap(x, y) {
+Snake::Snake(int x, int y): MyMap(x, y) {
     size_x = x, size_y = y;
     length = 1;
     direction = 4;
@@ -9,13 +9,13 @@ Snack::Snack(int x, int y): MyMap(x, y) {
     isMyBody[a] = true;
 }
 
-bool Snack::SnackMove(){
+bool Snake::SnakeMove(){
     Point head = body.front();
     Point tail = body.back();
     int nx = head.x + dx[direction];
     int ny = head.y + dy[direction];
     Point nextPos(nx, ny);
-    if(SnackDeath(nextPos)){
+    if(SnakeDeath(nextPos)){
         return true;
     }
 
@@ -23,7 +23,7 @@ bool Snack::SnackMove(){
     body.push_front(nextPos);
     isMyBody[nextPos] = true;
 
-    if(!SnackEat(nextPos)){
+    if(!SnakeEat(nextPos)){
         ShowPoint(tail, 0);
         body.pop_back();
         isMyBody[tail] = false;
@@ -32,7 +32,7 @@ bool Snack::SnackMove(){
     return false;
 }
 
-void Snack::SnackTurn(){
+void Snake::SnakeTurn(){
     char op;
     op = getch();
     if((op == 'W' || op == 'w') && direction != 3){ direction = 1; }
@@ -41,14 +41,14 @@ void Snack::SnackTurn(){
     if((op == 'D' || op == 'd') && direction != 2){ direction = 4; }
 }
 
-bool Snack::SnackDeath(Point nextPos){
+bool Snake::SnakeDeath(Point nextPos){
     if(nextPos.x <= 0 || nextPos.x > size_x || nextPos.y <= 0 || nextPos.y > size_y){
         return true;
     }
     return isMyBody[nextPos];
 }
 
-bool Snack::SnackEat(Point head){
+bool Snake::SnakeEat(Point head){
     if(head == food){
         CreatANewFood();
         return true;
@@ -56,13 +56,13 @@ bool Snack::SnackEat(Point head){
     return false;
 }
 
-void Snack::SnackBegin(){
+void Snake::SnakeBegin(){
     while(1){
         Sleep(80);
         if(kbhit()){
-            SnackTurn();
+            SnakeTurn();
         }
-        if(SnackMove()){
+        if(SnakeMove()){
             break;
         }
     }
