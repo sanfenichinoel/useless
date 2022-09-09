@@ -3,7 +3,7 @@
 int main()
 {
     SetConsoleOutputCP(65001);
-    Game ga(20, 8);
+    Game ga;
     ga.GameBegin();
 
     // SetColor(7);

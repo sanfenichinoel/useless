@@ -1,6 +1,8 @@
 #include "diamond.h"
 #include "mymap.h"
 #include <conio.h>
+#include <time.h>
+#include <stdlib.h>
 
 #ifndef __GAME__
 #define __GAME__

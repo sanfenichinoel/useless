@@ -1,6 +1,7 @@
 #include "game.h"
 
 Game::Game(int x, int y): gra(x, y){
+    srand((unsigned)time(NULL));
     bolck = new O;
 }
 Game::~Game(){
@@ -34,7 +35,7 @@ void Game::Control(){
 bool Game::CanMove(int zy){
     if(zy > 0){
         for(auto i : bolck->v){
-            if( (i.y + zy >= gra.size_x) || gra.gra[i.x][i.y + zy] != 0){
+            if( (i.y + zy >= gra.size_y) || gra.gra[i.x][i.y + zy] != 0){
                 return false;
             }
         }
@@ -70,7 +71,20 @@ bool Game::NewOne(){
     if(bolck != NULL){
         delete bolck;
     }
-    bolck = new O;
+
+    int o = rand() % 5;
+    if(o == 0){
+        bolck = new O;
+    }else if(o == 1){
+        bolck = new L;
+    }else if(o == 2){
+        bolck = new I;
+    }else if(o == 3){
+        bolck = new Z;
+    }else{
+        bolck = new F;
+    }
+    
     return (!GameOver()) ;
 }
 
