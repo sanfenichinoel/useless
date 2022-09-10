@@ -6,7 +6,6 @@ int main()
     Game ga;
     ga.GameBegin();
 
-    // SetColor(7);
-    // system("pause");
+    system("pause");
     return 0;
 }

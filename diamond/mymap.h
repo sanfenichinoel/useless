@@ -9,10 +9,9 @@ class MyMap
 public:
     int size_x, size_y;
     vector<vector<int> > gra;
-    MyMap(int x = 30, int y = 20);
+    MyMap(int x, int y);
     void ShowMap();
     void ClearRow(int li);
-    // void AddPoint(vector<int>& o);
 };
 
 #endif

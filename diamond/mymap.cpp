@@ -1,6 +1,6 @@
 #include "mymap.h"
 
-MyMap::MyMap(int x /* = ? */, int y /* = ? */): gra(x, vector<int>(y, 0)) {
+MyMap::MyMap(int x, int y): gra(x, vector<int>(y, 0)) {
     SetWindowSize(x, y);
     this->size_x = x, this->size_y = y;
 }

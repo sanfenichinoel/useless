@@ -8,10 +8,10 @@ class Diamond
 {
 public:
     vector<Point> v;
-    Diamond();
+    Diamond(int ex = 0);
     // 1 ↑, 2 ←, 3 ↓, 4 →
     void control(int id);
-    virtual void turn() = 0;
+    virtual vector<Point> turn();
     void show();
     void unshow();
 };
@@ -20,36 +20,36 @@ public:
 class O:public Diamond
 {
 public:
-    O();
-    void turn();
+    O(int ex = 0);
+    vector<Point> turn();
 };
 
 class L:public Diamond
 {
 public:
-    L();
-    void turn();
+    L(int ex = 0);
+    // vector<Point> turn();
 };
 
 class I:public Diamond
 {
 public:
-    I();
-    void turn();
+    I(int ex = 0);
+    // vector<Point> turn();
 };
 
 class Z:public Diamond
 {
 public:
-    Z();
-    void turn();
+    Z(int ex = 0);
+    // vector<Point> turn();
 };
 
 class F:public Diamond
 {
 public:
-    F();
-    void turn();
+    F(int ex = 0);
+    // vector<Point> turn();
 };
 
 

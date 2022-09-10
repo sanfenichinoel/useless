@@ -1,8 +1,8 @@
 #include "game.h"
 
-Game::Game(int x, int y): gra(x, y){
+Game::Game(int h, int x, int y): gra(x, y){
     srand((unsigned)time(NULL));
-    bolck = new O;
+    this->hard = h;
 }
 Game::~Game(){
     delete bolck;
@@ -12,7 +12,7 @@ void Game::Control(){
     int cnt = 10;
     while(1){
         bolck->show();
-        Sleep(120);
+        Sleep(hard);
 
         if(OneOver()){
             GraAdd();
@@ -22,7 +22,7 @@ void Game::Control(){
         if(kbhit()){
             char op;
             op = getch();
-            if((op == 'W' || op == 'w')){ bolck->control(1); }
+            if((op == 'W' || op == 'w') && CanTurn() ){ bolck->control(1); }
             if((op == 'A' || op == 'a') && CanMove(-1)){ bolck->control(2); }
             if((op == 'S' || op == 's')){ bolck->control(3); }
             if((op == 'D' || op == 'd') && CanMove(1)){ bolck->control(4); }
@@ -50,6 +50,19 @@ bool Game::CanMove(int zy){
     return true;
 }
 
+bool Game::CanTurn(){
+    vector<Point> ne = bolck->turn();
+    for (auto i : ne){
+        if(i.x < 0 || i.x >= gra.size_x || i.y < 0 || i.y >= gra.size_y){
+            return false;
+        }
+        if(gra.gra[i.x][i.y] != 0){
+            return false;
+        }
+    }
+    return true;
+}
+
 bool Game::OneOver(){
     for(auto i : bolck->v){
         if(i.x+2 >= gra.size_x || gra.gra[i.x+1][i.y] != 0){
@@ -74,15 +87,15 @@ bool Game::NewOne(){
 
     int o = rand() % 5;
     if(o == 0){
-        bolck = new O;
+        bolck = new O(gra.size_y / 2);
     }else if(o == 1){
-        bolck = new L;
+        bolck = new L(gra.size_y / 2);
     }else if(o == 2){
-        bolck = new I;
+        bolck = new I(gra.size_y / 2);
     }else if(o == 3){
-        bolck = new Z;
+        bolck = new Z(gra.size_y / 2);
     }else{
-        bolck = new F;
+        bolck = new F(gra.size_y / 2);
     }
     
     return (!GameOver()) ;
