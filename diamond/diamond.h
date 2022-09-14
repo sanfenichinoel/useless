@@ -28,28 +28,24 @@ class L:public Diamond
 {
 public:
     L(int ex = 0);
-    // vector<Point> turn();
 };
 
 class I:public Diamond
 {
 public:
     I(int ex = 0);
-    // vector<Point> turn();
 };
 
 class Z:public Diamond
 {
 public:
     Z(int ex = 0);
-    // vector<Point> turn();
 };
 
 class F:public Diamond
 {
 public:
     F(int ex = 0);
-    // vector<Point> turn();
 };
 
 
