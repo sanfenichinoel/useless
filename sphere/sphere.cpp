@@ -34,7 +34,7 @@ void Sphere::Move(){
 
     x += v_x;
 
-	fillcircle(x, y, r);
+	solidcircle(x, y, r);
 }
 void Sphere::MayTurn(){
     if(y + r + v_y >= size_y){
@@ -46,7 +46,7 @@ void Sphere::MayTurn(){
 }
 
 void Sphere::Clear(){
-    clearcircle(x, y, r+1);
+    clearcircle(x, y, r);
 }
 
 #endif
