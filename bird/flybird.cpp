@@ -2,7 +2,6 @@
 
 int main()
 {
-
 	Map mp(480, 360);
 	mp.Begin();
 
