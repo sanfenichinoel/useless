@@ -12,6 +12,7 @@ void ylsdd()
     while(1){
         if(_kbhit()){
             char x = getch();
+            // Esc -> 0x1b
             if(x == 0x1b){
                 break;
             }
