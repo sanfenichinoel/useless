@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <conio.h>
 
+// 设置窗口大小
 void SetWindowSize(int lines, int cols)
 {
     system("title sss");
