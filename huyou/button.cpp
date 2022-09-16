@@ -9,7 +9,6 @@ void ylsdd()
 {
     POINT o;
     GetCursorPos(&o);
-    ExMessage me;
     while(1){
         if(_kbhit()){
             char x = getch();
