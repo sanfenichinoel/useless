@@ -9,9 +9,11 @@ class Bird
 {
 private:
 	int pos_x, pos_y, r;
+	IMAGE img;
+	IMAGE img_turn;
 
 public:
-	Bird(int x, int y, int r = 10);
+	Bird(int x, int y, int r = 15);
 	void Down();
 	void Up();
 	void Begin();
@@ -24,25 +26,24 @@ Bird::Bird(int x, int y, int r){
 	this->pos_y = y;
 	this->r = r;
     initgraph(x, y);
-	solidcircle(pos_x, pos_y, r);
+	loadimage(&img, (LPCTSTR)"./bird.png", 0, 0);
+	Resize(&img, 30, 30);
+	rotateimage(&img_turn, &img, 0.5);
 }
 
 void Bird::Down(){
-	clearcircle(pos_x, pos_y, r);
 	pos_y += 10;
-	solidcircle(pos_x, pos_y, r);
+	putimage(pos_x - r, pos_y - r, &img);
 }
 
 void Bird::Up(){
-	clearcircle(pos_x, pos_y, r);
 	pos_y -= 20;
-	solidcircle(pos_x, pos_y, r);
+	putimage(pos_x - r, pos_y - r, &img_turn);
 }
 
 void Bird::Begin(){
 	if(kbhit()){
 		getch();
-		// Up();
 		Up();
 	}else{
 		Down();

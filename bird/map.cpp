@@ -30,6 +30,7 @@ Map::Map(int x, int y):bird(x / 2, y / 2){
 
 void Map::Show(){
 	cleardevice();
+    
 	for(auto i : v){
 		i->Show();
 	}
@@ -51,7 +52,7 @@ void Map::Begin(){
 	while(1){
         if(Over()) break;
 		ti++;
-		Sleep(100);
+		Sleep(80);
 		Show();
         bird.Begin();
 		Move();
