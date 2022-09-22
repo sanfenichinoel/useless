@@ -3,7 +3,7 @@
 #include <time.h>
 #include <iostream>
 #include <cmath>
-
+#define PI 3.1415926
 
 class Point
 {
@@ -12,30 +12,16 @@ private:
     int size_x, size_y;
 public:
     Point(int si_x, int si_y){
-        NewOne(si_x, si_y);
+        NewOne(si_x / 2, si_y / 2);
         this->size_x = si_x;
         this->size_y = si_y;
     }
-    void NewOne(int sx, int sy){
-        switch(rand() % 4)
-        {
-            case 0:
-                this->x = rand() % sx;
-                this->y = 0;
-                break;
-            case 1:
-                this->x = rand() % sx;
-                this->y = sy;
-                break;
-            case 2:
-                this->x = 0;
-                this->y = rand() % sy;
-                break;
-            case 3:
-                this->x = sx;
-                this->y = rand() % sy;
-                break;
-        }
+    void NewOne(int mx, int my){
+        double ang = rand() % 360;
+        ang = ang * PI / 180;
+        int r = std::max(size_x, size_y) / 2;
+        this->x = mx + r * std::cos(ang);
+        this->y = my + r * std::sin(ang);
     }
     void Show(int target_x, int target_y){
         putpixel(x, y, BLACK);
@@ -47,7 +33,7 @@ public:
     }
     void Move(int target_x, int target_y){
         if(x == target_x && y == target_y){
-            NewOne(size_x, size_y);
+            NewOne(target_x, target_y);
         }
         else{
             int dx = target_x - x;
