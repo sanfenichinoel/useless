@@ -3,7 +3,9 @@
 #include <time.h>
 #include <iostream>
 #include <cmath>
+
 #define PI 3.1415926
+#define PUS 7
 
 class Point
 {
@@ -39,16 +41,15 @@ public:
             int dx = target_x - x;
             int dy = target_y - y;
             int dis = sqrt(dx * dx + dy * dy);
-            int pus = 5;
             if(dx > 0){
-                dx = std::min(dx, dx * pus / dis + 1);
+                dx = std::min(dx, dx * PUS / dis);
             }else{
-                dx = std::max(dx, dx * pus / dis - 1);
+                dx = std::max(dx, dx * PUS / dis);
             }
             if(dy > 0){
-                dy = std::min(dy, dy * pus / dis + 1);
+                dy = std::min(dy, dy * PUS / dis);
             }else{
-                dy = std::max(dy, dy * pus / dis - 1);
+                dy = std::max(dy, dy * PUS / dis);
             }
 
             x += dx;
@@ -81,7 +82,7 @@ int main()
     m = getmessage(EX_MOUSE | EX_KEY);
     mx = m.x, my = m.y;
     while(1){
-        // Sleep(10);
+        Sleep(1);
         if(peekmessage(&m)){
             mx = m.x, my = m.y;
         }
