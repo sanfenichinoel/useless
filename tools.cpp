@@ -50,3 +50,20 @@ void SteadyMouse()
         SetCursorPos(o.x, o.y);
     }
 }
+
+// 你是我的神
+void UTF8ToGBK(const char* strUTF8, char* iNeed)
+{
+	int len = MultiByteToWideChar(CP_UTF8, 0, strUTF8, -1, NULL, 0);
+	wchar_t* wszGBK = new wchar_t[len + 1];
+	memset(wszGBK, 0, len * 2 + 2);
+	MultiByteToWideChar(CP_UTF8, 0, strUTF8, -1, wszGBK, len);
+	len = WideCharToMultiByte(CP_ACP, 0, wszGBK, -1, NULL, 0, NULL, NULL);
+	char* szGBK = new char[len + 1];
+	memset(szGBK, 0, len + 1);
+	WideCharToMultiByte(CP_ACP, 0, wszGBK, -1, szGBK, len, NULL, NULL);
+    strcpy(iNeed, szGBK);
+
+	if (wszGBK) delete[] wszGBK;
+	if (szGBK) delete[] szGBK;
+}
